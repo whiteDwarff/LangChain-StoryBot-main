@@ -7,6 +7,7 @@ from playsound import playsound
 # Module import
 from stt import request
 from interface_module import interface
+from API_KEY import pwd
 ###################################################################################
 ###########   깃 커밋할 때 [main], [role]의 API KEY는 공란으로 입력해주세요    #############
 ##################################################################################
@@ -20,7 +21,7 @@ documents = loader.load()
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap = 0)
 documents = text_splitter.split_documents(documents)
 
-
+'''
 def run():
     playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/start.mp3")
     menu_state = False 
@@ -40,3 +41,5 @@ def run():
 
 if __name__ == "__main__":
     run()
+    '''
+print(pwd.key)
