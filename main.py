@@ -13,7 +13,7 @@ from API_KEY import pwd
 ##################################################################################
 
 # OpenAI KEY
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = pwd.key
 # PDF 로더 초기화
 loader = PyPDFLoader("/home/jetson/Desktop/LangChain-StoryBot-main/assist/story/snow_white.pdf")
 documents = loader.load()
@@ -21,7 +21,6 @@ documents = loader.load()
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap = 0)
 documents = text_splitter.split_documents(documents)
 
-'''
 def run():
     playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/start.mp3")
     menu_state = False 
@@ -41,5 +40,3 @@ def run():
 
 if __name__ == "__main__":
     run()
-    '''
-print(pwd.key)

@@ -6,9 +6,9 @@ from gtts import gTTS
 from assist.gpio import led_gpio
 # thread import
 from assist.thread import led_thread
+from API_KEY import pwd
 
-openai.api_key = "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"
-
+openai.api_key = pwd.key
 
 def speak(text):
     tts = gTTS(text, lang='ko')
