@@ -10,13 +10,15 @@ from tts_module import speak
 from assist.gpio import led_gpio
 
 
-
-def handle_command(question, documents):
+def handle_command(question, a_documents, documents):
 
     if question is not None:
         if "동화" in question or "읽기" in question or "읽어" in question:
             playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/ready.mp3")
-            time.sleep(1)
+            #
+            tts = gTTS(f"{documents}", lang='ko')
+            tts.save("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/story.mp3")
+            #
             # speak 함수의 return값이 False일 경우 if문을 빠져나옴
             if story.speak() is False:
                 return False
@@ -36,7 +38,7 @@ def handle_command(question, documents):
                 user_question = request()
                 qna_state = True
                 # ask 함수의 return값이 False일 경우 while문 elif문을 빠져나옴
-                if answer.ask(documents, user_question) is False:
+                if answer.ask(a_documents, user_question) is False:
                     qna_state = False
                     return False
         ##############################################################
@@ -51,7 +53,7 @@ def handle_command(question, documents):
                 ai = request()
                 # GPT의 역할이 None이나 공백이 아닐경우 역할놀이를 시작
                 if ai is not None and ai != "":
-                    tts = gTTS(f"사용자의 역할은 {user}이고 토리의 역할은 {ai}입니다. 역할놀이를 시작해볼까요?", lang='ko')
+                    tts = gTTS(f"친구의 역할은 {user}이고 토리의 역할은 {ai}입니다. {user}역할을 시작해주세요", lang='ko')
                     tts.save("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/role_guide.mp3")
                     playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/role_guide.mp3")
             while True:
@@ -73,14 +75,14 @@ def handle_command(question, documents):
             sys.exit(0)
         # question이 None이 아니고 모든 조건이 충족되지 못할 경우 재귀호출 
         else:
-            playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/return.mp3")
+            playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/recognition.mp3")
             question = request()
-            handle_command(question, documents) 
+            handle_command(question, a_documents, documents) 
     # question이 None인 경우 재귀호출
     else:
-        playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/return.mp3")
+        playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/recognition.mp3")
         question = request()
-        handle_command(question, documents) 
+        handle_command(question, a_documents, documents) 
 
 
-    handle_command(question, documents)
+    handle_command(question, a_documents, documents)

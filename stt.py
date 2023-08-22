@@ -5,6 +5,7 @@ import sys
 def request():
     # 음성 인식기 생성
     r = sr.Recognizer()
+    global audio
 
     # 마이크에서 음성 입력 받기
     with sr.Microphone() as source:
@@ -24,6 +25,7 @@ def request():
 
     except sr.UnknownValueError:
         playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/recognition.mp3")
+        request()
+
     except sr.RequestError as e:
-        playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/exception.mp3")
-    request()
+        request()

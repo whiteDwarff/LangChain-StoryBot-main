@@ -3,7 +3,7 @@ import os
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from playsound import playsound
-
+from gtts import gTTS
 # Module import
 from stt import request
 from interface_module import interface
@@ -19,7 +19,7 @@ loader = PyPDFLoader("/home/jetson/Desktop/LangChain-StoryBot-main/assist/story/
 documents = loader.load()
 # chunk : text를 자르는 단위, 1000글자당 1chunk
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap = 0)
-documents = text_splitter.split_documents(documents)
+a_documents = text_splitter.split_documents(documents)
 
 def run():
     playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/start.mp3")
@@ -33,9 +33,9 @@ def run():
         command = request() 
         
         if not command:
-            continue
+            run()
         
-        interface.handle_command(command, documents)
+        interface.handle_command(command, a_documents, documents)
         menu_state = True
 
 if __name__ == "__main__":
