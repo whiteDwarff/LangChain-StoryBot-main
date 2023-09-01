@@ -14,8 +14,7 @@ def request():
             # 3초간 입력이 없다면 종료
             audio = r.listen(source, timeout=3)
         except sr.WaitTimeoutError:
-            playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/try_recognition.mp3")
-            # sys.exit(0)
+            playsound("/home/jetson/Desktop/LangChain-StoryBot-main/assist/wav/try_recognitio.wav")
             request()
     try:
         # 음성을 텍스트로 변환
@@ -24,7 +23,7 @@ def request():
         return text
 
     except sr.UnknownValueError:
-        playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/recognition.mp3")
+        playsound("/home/jetson/Desktop/LangChain-StoryBot-main/assist/wav/try_recognitio.wav")
         request()
 
     except sr.RequestError as e:

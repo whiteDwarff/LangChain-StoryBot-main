@@ -3,9 +3,9 @@ from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from playsound import playsound
-from qna_module import answer_stt
 import sys
 import os
+from tts_module import tts
 from langchain.prompts.chat import(
     ChatPromptTemplate,
     SystemMessagePromptTemplate,
@@ -103,7 +103,7 @@ def ask(story, question):
         return False
     # '종료'라는 단어를 포함한 문장을 말하면 시스템을 종료
     elif question is not None and '종료' in question or '끝내' in question:
-        playsound("/home/jetson/Desktop/LangChain-StoryBot-main/mp3/end.mp3")
+        playsound("/home/jetson/Desktop/LangChain-StoryBot-main/assist/wav/end.wav")
         led_gpio.outLed()
         sys.exit(0)
     # 질문과 답변이 계속 실행
@@ -113,12 +113,9 @@ def ask(story, question):
         print(f"response : {answer['answer']}")
         #answer_stt.result(answer['answer'])
 
-        led_thread.thread(led_gpio.blinkLed, answer_stt.result, answer['answer'], led_gpio.outLed)
-
+        #led_thread.thread(led_gpio.blinkLed, answer_stt.result, answer['answer'], led_gpio.outLed)
+        led_thread.thread(led_gpio.blinkLed, tts.gtts, answer['answer'], 'answer', led_gpio.outLed)
         return True
     # 모든 조건이 충족하지 못해도 새로운 질문을 시작
     else:
         return True
-    
-    #######################################################################
-    # 질문이 없을 경우 예외처리 !!!!

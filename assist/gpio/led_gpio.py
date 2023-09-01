@@ -8,7 +8,7 @@ import time
 # Pin Definition
 led_pin = 7
 
-# Set GPIO mide
+# Set GPIO mode
 GPIO.setmode(GPIO.BOARD)
  
 def outLed():
@@ -30,6 +30,5 @@ def blinkLed(stop_event):
         GPIO.output(led_pin, GPIO.LOW)
 
 
-
-
+####################################################
 

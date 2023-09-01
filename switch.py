@@ -12,15 +12,14 @@ GPIO.setup(PIN, GPIO.OUT, initial=GPIO.HIGH)
 
 def button_pressed(channel):
         print("스위치가 눌렸습니다!")
-
 try:
     # 이벤트 핸들러 등록
     GPIO.add_event_detect(BUTTON_PIN, GPIO.FALLING, callback=button_pressed, bouncetime=200)
     
-    print("스위치 눌림 이벤트를 감지 중... (Ctrl+C를 눌러 종료)")
 
     # 프로그램이 계속 실행되도록 대기
     while True:
+        print("스위치 눌림 이벤트를 감지 중... (Ctrl+C를 눌러 종료)")
         time.sleep(1)
 
 except KeyboardInterrupt:
