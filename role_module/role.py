@@ -5,9 +5,10 @@ from gtts import gTTS
 # gpio import 
 from assist.gpio import led_gpio
 # thread import
-from assist.thread import led_thread
 from API_KEY import pwd
 from tts_module import tts
+from assist.thread import led_thread
+
 
 openai.api_key = pwd.key
 
@@ -58,7 +59,7 @@ def role_playing(user, ai, question):
     """
 
     result = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo-0301",
+        model="gpt-3.5-turbo-16k",
         messages=[
             {"role": "system", "content": template},
             {"role": "user", "content": f"{user}"},
@@ -75,15 +76,14 @@ def role_playing(user, ai, question):
     # '종료'라는 단어를 포함한 문장을 말하면 시스템을 종료
     elif question is not None and '종료' in question or '끝내' in question:
         playsound("/home/jetson/Desktop/LangChain-StoryBot-main/assist/wav/end.wav")
-        led_gpio.outLed()
+        led_gpio.Green_outLed()
         sys.exit(0)
     # 질문과 답변이 계속 실행
     elif question is not None:
+        led_gpio.RedLed()
         # 사용자의 질문에 대한 답변을 가지고 있는 변수
         print(f"response : {result.choices[0].message['content']}")
-
-        led_thread.thread(led_gpio.blinkLed, tts.gtts ,result.choices[0].message["content"], 'role', led_gpio.outLed)
-
+        tts.gtts(result.choices[0].message['content'], 'role')
         return True
     # 모든 조건이 충족하지 못해도 새로운 질문을 시작
     else:

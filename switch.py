@@ -1,4 +1,8 @@
 import Jetson.GPIO as GPIO
+# GPIO.setmode(GPIO.BOARD)
+GPIO.cleanup()
+
+
 import time
 
 # GPIO 핀 번호 설정 (Jetson Nano 핀 번호 사용)

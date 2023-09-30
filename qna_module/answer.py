@@ -4,6 +4,7 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from playsound import playsound
 import sys
+from stt import request
 import os
 from tts_module import tts
 from langchain.prompts.chat import(
@@ -13,8 +14,7 @@ from langchain.prompts.chat import(
 )
 # gpio import 
 from assist.gpio import led_gpio
-# thread import
-from assist.thread import led_thread
+
 
 def ask(story, question):
 
@@ -99,22 +99,29 @@ def ask(story, question):
     # sound Interface
     # ------------------------------------------------
     # '뒤로'라는 단어를 포함한 문장을 말하면 메뉴선택 화면으로 이동
+
+
+    if question is None: 
+        print('None!!!')
+        new_requset = request()
+        ask(story, new_requset)
+        return True
+
     if question is not None and '뒤로' in question or '메뉴' in question:
         return False
     # '종료'라는 단어를 포함한 문장을 말하면 시스템을 종료
     elif question is not None and '종료' in question or '끝내' in question:
         playsound("/home/jetson/Desktop/LangChain-StoryBot-main/assist/wav/end.wav")
-        led_gpio.outLed()
+        led_gpio.Green_outLed()
         sys.exit(0)
     # 질문과 답변이 계속 실행
     elif question is not None:
         # 사용자의 질문에 대한 답변을 가지고 있는 변수
         answer = chain(question)
+        led_gpio.RedLed()
         print(f"response : {answer['answer']}")
-        #answer_stt.result(answer['answer'])
-
+        tts.gtts(answer['answer'],'answer1')
         #led_thread.thread(led_gpio.blinkLed, answer_stt.result, answer['answer'], led_gpio.outLed)
-        led_thread.thread(led_gpio.blinkLed, tts.gtts, answer['answer'], 'answer', led_gpio.outLed)
         return True
     # 모든 조건이 충족하지 못해도 새로운 질문을 시작
     else:
