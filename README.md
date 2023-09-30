@@ -2,23 +2,24 @@
 
 # 스토리봇 - 유아용 동화 스토리봇 (유아용 동화 읽기, 번역 도우미)
 
-1. **프로젝트 개요**
+## 1.프로젝트 개요
 
 스토리봇은 ChatGPT 기반의 유아용 동화 스토리봇입니다. 이 프로젝트는 다음과 같은 주요 기능을 제공합니다:
 
-- 동화 읽어주기: 사용자에게 선택된 동화를 읽어주는 기능
-- 질의응답하기: 사용자의 질문에 대답해주는 기능
-- 역할놀이: 사용자와 대화하며 역할놀이를 할 수 있는 기능
-- 요약: 동화를 요약하여 사용자에게 제공하는 기능
-- 번역: 동화를 다른 언어로 번역해주는 기능
+    - 동화 읽어주기: 사용자에게 선택된 동화를 읽어주는 기능
+    - 질의응답하기: 사용자의 질문에 대답해주는 기능
+    - 역할놀이: 사용자와 대화하며 역할놀이를 할 수 있는 기능
+    - 요약: 동화를 요약하여 사용자에게 제공하는 기능
+    - 번역: 동화를 다른 언어로 번역해주는 기능
 
 또한, 이 모델은 PDF 문서를 학습시켜 콘텐츠를 이해하고 처리하는 기능을 갖추고 있습니다.
 
-1. **목표:**
+## 2. 목표
     - 유아들을 대상으로 한 유창한 동화 읽기 및 상호작용 서비스 개발
     - 상상력을 자극하고 언어 능력 향상을 도모하는 동화 스토리봇 구현
     - ChatGPT 모델에 PDF 학습을 통해 다양한 동화를 구현할 수 있는 환경 제공
-2. **기능 설명:**
+
+## 3. 기능설명
     - 동화 읽어주기 기능: ChatGPT 모델을 활용하여 다양한 동화를 실시간으로 읽어주는 기능
     - 질의응답하기 기능: 유아들이 동화 내용에 대해 질문을 하고, ChatGPT 모델이 답변을 제공하는 기능
     - 역할놀이 기능: 유아들이 동화의 캐릭터 역할을 맡고, ChatGPT 모델이 상호작용하여 역할놀이를 도와주는 기능
@@ -48,25 +49,25 @@ Langchain을 사용한다면, agent를 사용하여 “문제”를 “추론”
 
 ## 일정
 
-1. 기획 및 환경 설정 (1일):
+1. 기획 및 환경 설정 :
     - 프로젝트 목표 및 요구사항 정의
     - 필요한 라이브러리 및 도구 설치
     - Jetson Nano 설정 및 연결
-2. 데이터 수집 및 전처리 (1일):
+2. 데이터 수집 및 전처리 :
     - 유아용 동화 데이터 수집
     - 데이터 전처리 (텍스트 정제, 포맷 변환 등)
-3. 언어 모델 학습 (1일):
+3. 언어 모델 학습 :
     - ChatGPT 모델 학습 데이터 준비
     - ChatGPT 모델 학습 및 튜닝
     - 학습된 모델 저장 및 테스트
-4. PDF 문서 학습 (1일):
+4. PDF 문서 학습 :
     - PDF 문서를 텍스트로 변환하여 벡터 데이터베이스에 등록
     - 벡터 데이터베이스 구축 및 검색 기능 테스트
-5. 음성 처리 기능 추가 (1일):
+5. 음성 처리 기능 추가 :
     - 음성 인식 기능 구현
     - 음성을 텍스트로 변환하여 질의응답 기능에 통합
     - 음성 출력 기능 구현
-6. 기능 통합 및 최적화 (1일):
+6. 기능 통합 및 최적화 :
     - 각 기능을 통합하여
 
 사용자 친화적인 인터페이스 제공
@@ -93,3 +94,32 @@ Langchain을 사용한다면, agent를 사용하여 “문제”를 “추론”
     - OpenAI ChatGPT 모델 문서 : https://openai.com/models/chatgpt
     - PDF 학습 관련 라이브러리 및 도구 문서 : [pdfloader](https://js.langchain.com/docs/api/document_loaders_fs_pdf/classes/PDFLoader)
     - colab link : https://colab.research.google.com/drive/1TONWO7bAg8Lkn4jprdBf5D-Go7C1N1w1?usp=sharing
+
+
+## Presentation
+
+![슬라이드1](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/3eba63e9-e497-40c1-b411-29590ec10b25)
+![슬라이드2](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/0667c880-b81b-40ed-8e78-b2e46a515e0e)
+![슬라이드3](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/d4341bb0-b842-4290-b17f-c406dfe2ab3c)
+![슬라이드4](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/061afe54-cdef-4d72-988f-83d8c202843f)
+![슬라이드5](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/5c54be83-d646-47ed-9eab-22d818d6bc9d)
+![슬라이드6](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/3be4b1ab-0e2b-4012-ace1-5fe2d7adc0d4)
+![슬라이드7](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/6fc2a3ed-575d-427d-a5c8-11a0cf75ae60)
+![슬라이드8](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/9538fb4a-e9db-471b-b0de-16b4683596fa)
+![슬라이드9](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/c21b7501-7285-486d-a978-be1369695aa0)
+![슬라이드10](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/22fcfc0b-05e0-40b9-b49b-493c050f28c7)
+![슬라이드11](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/7c79797b-1eb6-476e-a676-481dbf001c22)
+![슬라이드12](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/d984b0e4-3827-4b21-9aee-9800abd0a8fc)
+![슬라이드13](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/688ca633-d94f-4034-88b8-c334afcfe06a)
+![슬라이드14](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/6b836529-9dee-47c0-b03c-06668d0e5a96)
+![슬라이드15](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/a8cc9892-8a13-4d94-8f12-baf12551c378)
+![슬라이드16](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/0d1b4675-b93c-4b9f-afa4-ac5b15909be5)
+![슬라이드17](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/791657dc-c4e0-4e1f-ad0e-9a5e7ec9cea5)
+![슬라이드18](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/54d00a96-2626-4215-aab4-c6b20e26af19)
+
+## 전시계획
+![전시계획](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/2195c7fb-c2a7-4421-a554-3c834d34d975)
+
+## 케이스 도면
+![아크릴도면](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/fbbc3c40-dec2-40b7-84f6-7060ced6623c)
+
