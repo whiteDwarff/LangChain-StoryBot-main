@@ -118,7 +118,7 @@ Langchain을 사용한다면, agent를 사용하여 “문제”를 “추론”
 ![슬라이드18](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/54d00a96-2626-4215-aab4-c6b20e26af19)
 
 ## 전시계획
-![전시계획](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/2195c7fb-c2a7-4421-a554-3c834d34d975)
+![전시계획](https://github.com/whiteDwarff/LangChain_StoryBot_Tory/assets/115057117/fb73efc1-23ac-4c60-bfc9-e31c72229dd4)
 
 ## JetsonNano 케이스 도면
 ![아크릴도면](https://github.com/whiteDwarff/LangChain-StoryBot-main/assets/115057117/fbbc3c40-dec2-40b7-84f6-7060ced6623c)
